@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostsControlles;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,3 +38,7 @@ Route::get('/test3', function () {
 });
 
 Route::get('/test4', [TestController::class,'index']);
+
+//Route::get('/posts/create', 'PostsControlles@create');
+
+Route::get('/posts/create', [PostsControlles::class,'create']);
