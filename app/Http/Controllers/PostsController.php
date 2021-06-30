@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PostsControlles extends Controller
+class PostsController extends Controller
 {
     public function create(){
       //  dd('OK'); //이안에 넣는 내용을 넣고 죽어라

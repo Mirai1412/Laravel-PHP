@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\PostsControlles;
-use App\Http\Controllers\TestController;
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,32 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-
 });
 
-Route::get('/test', function () {
-    return 'welcome !!!!';
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-}); //8000/test
+require __DIR__.'/auth.php';
 
-Route::get('/test2', function () {
-    return view('test.index');
-
-});
-
-Route::get('/test3', function () {
-    //비지니스 로직 처리
-    $name = 'mirai';
-    return view('test.show',['name' => $name , 'age'=>10]);
-
-});
-
-Route::get('/test4', [TestController::class,'index']);
-
-//Route::get('/posts/create', 'PostsControlles@create');
-
-Route::get('/posts/create', [PostsControlles::class,'create']);
-//get 방식은 상세 정보조회
-Route::post('/posts/store', [PostsControlles::class,'store']);
-//자원에 대한 변경요청은 post요청으로 보낸다
-//post요청시 csrf토큰이 있는지 확인후 없으면 차단한다
+Route::get('posts/create', [PostsController::class, 'create']);
+Route::post('posts/store', [PostsController::class, 'store']);
