@@ -42,3 +42,7 @@ Route::get('/test4', [TestController::class,'index']);
 //Route::get('/posts/create', 'PostsControlles@create');
 
 Route::get('/posts/create', [PostsControlles::class,'create']);
+//get 방식은 상세 정보조회
+Route::post('/posts/store', [PostsControlles::class,'store']);
+//자원에 대한 변경요청은 post요청으로 보낸다
+//post요청시 csrf토큰이 있는지 확인후 없으면 차단한다
