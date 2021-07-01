@@ -45,7 +45,7 @@
         <div class="container">
             <form action="/posts/store" method="post">
 
-                @csrf
+                @csrf<!-- 토큰 -->
                 <div class="form-group">
                     <label for="title">제목</label>
                     <input type="text" name="title" class="form-group">
