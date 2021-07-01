@@ -11,7 +11,7 @@ class PostsController extends Controller
     public function index(){
      //   $posts = Post::orderBy('created_at','desc')->get();//몇분전에 입력된는지 최신순 정렬
         // return $posts;
-        $posts = Post::latest()->paginate(8);//글은 5개까지 작성이가능하다.
+        $posts = Post::latest()->paginate(5);//글은 5개까지 작성이가능하다.
         return view('posts.index',['posts'=>$posts]);
 
     }

@@ -6,43 +6,89 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Document</title>
         <style>
-            h1 {
-                margin-left: 310px;
-                margin-bottom: 0px;
+            body{
+                margin: 0 auto;
+                width: 700px;
+                height: 1000px;
             }
-            
+
+            h1 {
+        
+                text-align: center;
+            }
+
             li,
             ul {
                 list-style: none;
-                margin: 0;
-                padding: 0;
                 max-width: 250px;
-                padding: 5px 0px 5px 5px;
-                font-size: 15px
+                font-size: 15px;
+                text-align: left;
             }
-
+            ul{
+                padding: 0;
+            }
                 div.box{
-                    width: 600px;
+                    width: 700px;
                     height: 100px;
                     border: 1px solid rgb(0, 0, 0);
-                    margin-left: 300px;
-                    padding: 10px;
+                    margin: 0 auto;
+                    padding-bottom: 10px;
+                    margin-bottom:10px ;
+                    text-align: left;
                 }
+
                 span{
-                    margin-top: 5px
+                    margin-top: 5px;
                 }
-                div{
-                    margin-bottom: 2px
-                    margin-top: 2px
+
+                div.flex{
+                    width: 150px;
+                    margin: 0px;
+                    text-align: left;
                 }
+
+                p{
+                    width: 300px;
+                    margin: 0px;
+                    text-align: left;
+                }
+
+                .btn{
+                  width: 130px;
+                 height: 25px;
+        
+                }
+           
             button{
-              margin-left: 310px;
+              width: 100px;
+              height: 100px;
                 }
-            }
+
+                svg{
+                    width: 100px;
+                    height: 100px;
+                    margin-right: 80px;
+                    margin-left: 80px;
+                    padding: 5px;
+                }/*세미콜론 확인 */
+
+                div{
+                    text-align: center;
+                    
+                }
+                .box2{
+                    text-align: left;
+                }
+            }          
         </style>
  </head>
 <body>
 <h1>게시판</h1>
+<div class="box2">
+    <a href="/posts/create">
+        <button type="submit" class="btn">게시글 작성하기</button>
+    </a>
+</div>
 <div class="container">
     <ul>
         @foreach ($posts as $post)
@@ -51,7 +97,7 @@
                 <span>제목 :
                     {{  $post->title }}</span>
 
-                <div >
+                <div class="box2">
                     {{  $post->content }}
                 </div>
 
@@ -65,11 +111,7 @@
         <div>
             {{ $posts->links()}}
         </div>
-        <div>
-            <a href="/posts/create" >
-                <button type="submit">게시글 작성하기</button>
-            </a>
-            </div>
+
     </div>
 </body>
 </html>
