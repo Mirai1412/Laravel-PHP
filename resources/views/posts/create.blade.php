@@ -44,24 +44,27 @@
         <h1>Post Create</h1>
         <div class="container">
             <form action="/posts/store" method="post">
-
                 @csrf<!-- 토큰 -->
                 <div class="form-group">
                     <label for="title">제목</label>
-                    <input type="text" name="title" class="form-group">
+                    <input type="text" name="title" class="form-group"
+                    value="{{ old('title')}}">     <!-- 지워지지않게 한다-->
+                    @error('title')
+                    <div>{{$message}}</div>
+                    @enderror   <!-- 에러 메세지 출력 -->
                 </div>
-
                 <br>
-
                 <div class="form-group">
                     <label for="content">내용</label>
-                    <textarea id="content" name="content" class="form-group"></textarea>
+                    <textarea id="content" name="content" class="form-group">{{old('content')}}</textarea>
+                    @error('content')
+                    <div>{{ $message }}</div>
+                    @enderror
                 </div>
                 <br>
-
                 <div class="button">
                     <button type="submit">확인</button>
-                    <button type="submit">취소</button>
+                    <!-- <button type="submit">취소</button> -->
                 </div>
             </div>
         </form>
