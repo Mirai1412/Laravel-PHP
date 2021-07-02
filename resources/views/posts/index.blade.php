@@ -8,12 +8,12 @@
         <style>
             body{
                 margin: 0 auto;
-                width: 700px;
+                width: 822px;
                 height: 1000px;
             }
 
             h1 {
-        
+
                 text-align: center;
             }
 
@@ -28,11 +28,11 @@
                 padding: 0;
             }
                 div.box{
-                    width: 700px;
+                    width: 800px;
                     height: 100px;
                     border: 1px solid rgb(0, 0, 0);
                     margin: 0 auto;
-                    padding-bottom: 10px;
+                    padding: 10px;
                     margin-bottom:10px ;
                     text-align: left;
                 }
@@ -56,9 +56,9 @@
                 .btn{
                   width: 130px;
                  height: 25px;
-        
+
                 }
-           
+
             button{
               width: 100px;
               height: 100px;
@@ -74,44 +74,58 @@
 
                 div{
                     text-align: center;
-                    
+
                 }
                 .box2{
                     text-align: left;
+                    width: 722px;
+                    margin: 0;
                 }
-            }          
+
+                .dashboard{
+
+                }
+            }
         </style>
  </head>
 <body>
-<h1>게시판</h1>
-<div class="box2">
-    <a href="/posts/create">
-        <button type="submit" class="btn">게시글 작성하기</button>
-    </a>
-</div>
-<div class="container">
-    <ul>
-        @foreach ($posts as $post)
-        <li>
-            <div class="box">
-                <span>제목 :
-                    {{  $post->title }}</span>
+    <h1>게시판</h1>
+    <div class="box2">
+        @auth<!-- 현재로그인한 사용자만 보이게한다.-->
 
-                <div class="box2">
-                    {{  $post->content }}
-                </div>
+        <a href="/posts/create">
+            <button type="submit" class="btn">게시글 작성하기</button>
+        </a>
 
-                <span>작성시간
-                    {{  $post-> created_at }}</span>
-                <hr></div>
+        @endauth
 
-            </li>
-            @endforeach
-        </ul>
-        <div>
-            {{ $posts->links()}}
-        </div>
+        <a href="{{route('dashboard')}}" class="dashboard">Dashboard</a>
 
     </div>
-</body>
+
+    <div class="container">
+        <ul>
+            @foreach ($posts as $post)
+            <li>
+                <div class="box">
+
+                    <span>
+                        <a href="{{route('posts.show', ['id'=>$post->id, 'page'=>$posts->currentPage()])}}">제목 : {{ $post->title }}</a>
+                    </span>
+
+                    <div class="box2">
+                        {{  $post->content }}
+                    </div>
+
+                    <span>작성시간
+                        {{  $post-> created_at }}</span>
+                    <hr></div>
+                </li>
+                @endforeach
+            </ul>
+            <div>
+                {{ $posts->links()}}
+            </div>
+        </div>
+    </body>
 </html>

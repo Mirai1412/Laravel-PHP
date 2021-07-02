@@ -5,7 +5,7 @@
         <style>
             h1 {
                 display: inline-block;
-                padding-left: 555px;
+                padding-left: 670px;
             }
             form {
                 margin: 0 auto;
@@ -34,10 +34,6 @@
                 box-sizing: border-box;
                 border: 1px solid rgb(0, 0, 0);
             }
-            .button {
-                padding-left: 1px;
-            }
-            button {}
         </style>
     </head>
     <body>
@@ -45,18 +41,19 @@
         <div class="container">
             <form action="/posts/store" method="post">
                 @csrf<!-- 토큰 -->
-                <div class="form-group">
+                <div class="title">
                     <label for="title">제목</label>
-                    <input type="text" name="title" class="form-group"
-                    value="{{ old('title')}}">     <!-- 지워지지않게 한다-->
+                    <input type="text" name="title" value="{{ old('title')}}">
+                    <!-- 지워지지않게 한다-->
                     @error('title')
                     <div>{{$message}}</div>
-                    @enderror   <!-- 에러 메세지 출력 -->
+                    @enderror
+                    <!-- 에러 메세지 출력 -->
                 </div>
                 <br>
-                <div class="form-group">
+                <div class="content">
                     <label for="content">내용</label>
-                    <textarea id="content" name="content" class="form-group">{{old('content')}}</textarea>
+                    <textarea id="content" name="content">{{old('content')}}</textarea>
                     @error('content')
                     <div>{{ $message }}</div>
                     @enderror
