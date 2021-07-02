@@ -1,68 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <title>Post Create</title>
         <style>
-            h1 {
-                display: inline-block;
-                padding-left: 670px;
+            body {
+                margin: 0 auto;
+            }
+            /* RED BORDER ON INVALID INPUT */
+            .check input:invalid {
+                border-color: red;
             }
             form {
-                margin: 0 auto;
-                width: 400px;
-                height: 230px;
-                padding: 1em;
-                border: 1px solid rgb(0, 0, 0);
-                border-radius: 1em;
+                margin: 100px;
             }
-            textarea {
-                vertical-align: top;
-                height: 5em;
-                resize: vertical;
+            /* FLOATING LABEL */
+            .label-floating input:not(:placeholder-shown),
+            .label-floating textarea:not(:placeholder-shown) {
+                padding-top: 1.4rem;
             }
-            label {
-                display: inline-block;
-                width: 90px;
-                text-align: left;
-                padding-left: 5px;
+            .label-floating input:not(:placeholder-shown) ~ label,
+            .label-floating textarea:not(:placeholder-shown) ~ label {
+                font-size: 0.8rem;
+                transition: all 0.2s ease-in-out;
+                color: #1f9d55;
+                opacity: 1;
             }
-            input,
-            textarea {
-                font: 1em sans-serif;
-                width: 300px;
-                -moz-box-sizing: border-box;
-                box-sizing: border-box;
-                border: 1px solid rgb(0, 0, 0);
+            button {
+                width: 100%;
             }
         </style>
     </head>
     <body>
-        <h1>Post Create</h1>
-        <div class="container">
-            <form action="/posts/store" method="post">
-                @csrf<!-- 토큰 -->
-                <div class="title">
-                    <label for="title">제목</label>
-                    <input type="text" name="title" value="{{ old('title')}}">
-                    <!-- 지워지지않게 한다-->
+        <form
+            action="/posts/store"
+            method="post"
+            class="w-full mx-auto max-w-3xl bg-white shadow p-8 text-gray-700 ">
+            @csrf<!-- 토큰 -->
+            <h2 class="w-full my-2 text-3xl font-bold leading-tight my-5">Post Create</h2>
+            <!-- name field -->
+            <div class="flex flex-wrap mb-6">
+                <div class="relative w-full appearance-none label-floating">
+                    <input
+                        class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+                        type="text"
+                        name="title"
+                        value="{{ old('title')}}"
+                        placeholder="Your name"
+                        required="required">
+                    <label
+                        for="title"
+                        class="absolute tracking-wide py-2 px-4 mb-4 opacity-0 leading-tight block top-0 left-0 cursor-text">
+                        Your name
+                    </label>
                     @error('title')
                     <div>{{$message}}</div>
                     @enderror
                     <!-- 에러 메세지 출력 -->
                 </div>
-                <br>
-                <div class="content">
-                    <label for="content">내용</label>
-                    <textarea id="content" name="content">{{old('content')}}</textarea>
+            </div>
+
+            <!-- Message field -->
+            <div class="flex flex-wrap mb-6">
+                <div class="relative w-full appearance-none label-floating">
+                    <textarea
+                        class="autoexpand tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="content"
+                        name="content"
+                        placeholder="Message">{{old('content')}}</textarea>
+                    <label
+                        for="content"
+                        class="absolute tracking-wide py-2 px-4 mb-4 opacity-0 leading-tight block top-0 left-0 cursor-text">Message</label>
                     @error('content')
                     <div>{{ $message }}</div>
                     @enderror
                 </div>
-                <br>
-                <div class="button">
-                    <button type="submit">확인</button>
-                    <!-- <button type="submit">취소</button> -->
-                </div>
+            </div>
+            <div class="dtn">
+                <button
+                    type="submit"
+                    class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6">
+                    Send</button>
             </div>
         </form>
     </body>
