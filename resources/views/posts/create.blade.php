@@ -13,6 +13,9 @@
             .check input:invalid {
                 border-color: red;
             }
+            .file{
+
+            }
             form {
                 margin: 100px;
             }
@@ -37,6 +40,8 @@
         <form
             action="/posts/store"
             method="post"
+            enctype="multipart/form-data"
+            {{-- 파일을 업로드하기위해 필수 --}}
             class="w-full mx-auto max-w-3xl bg-white shadow p-8 text-gray-700 ">
             @csrf<!-- 토큰 -->
             <h2 class="w-full my-2 text-3xl font-bold leading-tight my-5">Post Create</h2>
@@ -63,6 +68,7 @@
             </div>
 
             <!-- Message field -->
+
             <div class="flex flex-wrap mb-6">
                 <div class="relative w-full appearance-none label-floating">
                     <textarea
@@ -78,6 +84,15 @@
                     @enderror
                 </div>
             </div>
+            <!-- file field -->
+
+            <div class="file">
+                    <label
+                        for="file"
+                        class="">file : </label>
+                    <input type="file" id="file" name="imageFile">
+            </div>
+
             <div class="dtn">
                 <button
                     type="submit"
