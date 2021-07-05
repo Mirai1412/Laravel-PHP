@@ -18,11 +18,19 @@
             </div>
             <br>
             <div class="content">
-                <label>내용</label>
+                <label for="content">내용</label>
                 <textarea id="content" name="content" readonly="readonly">{{$post->content}}</textarea>
             </div>
+
+            <div class="content">
+                <label for ="imageFile">Post Image</label>
+                <img class="img-thumbnail" width="20%"
+                src="/storage/images/{{ $post->image ?? 'no.png'}}"/>
+                {{-- <img src="{{ $post->imagePath}}"> --}}
+            </div>
+
             <div class="day">
-                <label>수정일</label>
+                <label>등록일</label>
                 <input
                     type="text"
                     value="{{ $post->updated_at->diffForHumans()/*몇분전에 작성을 했는지*/}}">

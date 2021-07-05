@@ -74,7 +74,7 @@ class PostsController extends Controller
         $fileName =  $nameWithoutExtension.'.'.time().'.'.$extension;
         //dd($fileName);
         //파일 이름을 컬럼에 설정
-        $request->file('imageFile')->storeAs('images',$fileName);
+        $request->file('imageFile')->storeAs('public/images',$fileName);
         $post->image = $fileName;
         }
 
