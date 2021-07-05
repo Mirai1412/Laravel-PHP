@@ -82,7 +82,7 @@
                 <button
                     type="submit"
                     class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6">
-                    Send</button>
+                    Create</button>
             </div>
         </form>
     </body>

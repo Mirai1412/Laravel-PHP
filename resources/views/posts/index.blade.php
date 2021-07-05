@@ -7,38 +7,47 @@
         <title>Bulletin Board</title>
         <style>
      body{
+         width: 800px;
          margin: 0 auto;
+         height: 1200px;
      }
      .flex2{
          margin:10px;
      }
      h1{
-
+        text-align: center;
+        font-size: 50px;
      }
      div.bg{
-         width: 800px;
          padding: 0;
-         width: 300px;
+         margin-bottom: 10px;
      }
      div.p-16{
         padding: 0;
-        margin: 0;
+        margin: 10px;
      }
      div.grid{
          margin-bottom: 5px;
      }
+     button{
+         margin-left: 10px;
+         margin-right: 300px;
+     }
+     div.hidden{
+        margin: 10px;
+     }
         </style>
  </head>
 <body>
-    <h1>게시판</h1>
+    <h1>Bulletin Board</h1>
     @foreach ($posts as $post)
     <div class="p-16">
-        <div class="grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 m-5 mb-10">
+
                 <div class="bg-white overflow-hidden hover:bg-green-100 border border-gray-200 p-3">
             <div class="m-2 text-justify text-sm">
                 <p class="text-right text-xs"> {{  $post-> created_at }}</p>
                 <span>
-                    <a href="{{route('posts.show', $post->id) }}">제목 : {{ $post->title }}</a>
+                    <a href="{{route('posts.show', $post->id) }}">Title : {{ $post->title }}</a>
                 </span>
                 <div class="box2">
                     {{  $post->content }}
@@ -48,7 +57,7 @@
                   </div>
             </div>
         </div>
-        </div>
+
     </div>
       @endforeach
       @auth<!-- 현재로그인한 사용자만 보이게한다.-->
