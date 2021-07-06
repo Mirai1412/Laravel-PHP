@@ -21,6 +21,7 @@
             div.bg {
                 padding: 0;
                 margin-bottom: 10px;
+                width: 600px;
             }
             div.p-16 {
                 padding: 0;
@@ -35,6 +36,10 @@
             }
             div.hidden {
                 margin: 10px;
+            }
+            div.box2{
+                width: 600px;
+                height: 100px;
             }
         </style>
     </head>

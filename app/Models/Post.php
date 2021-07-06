@@ -12,7 +12,7 @@ class Post extends Model
     public function imagePath(){
         // $path = '/storage/images/';
         $path = env('IMAGE_PATH', '/storage/images/');
-        $imageFile = $this->image ?? 'no.jpg';
+        $imageFile = $this->image ?? 'no.png';
         return $path.$imageFile;
     }
 

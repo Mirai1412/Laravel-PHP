@@ -38,7 +38,7 @@ class PostsController extends Controller
          // 이미지 파일 수정.파일시스템에서
 
         if($request->file('imageFile')){
-            $imagePath = 'public/images/'.$post->image;
+            $imagePath = 'public/images/' .$post->image;
             Storage::delete($imagePath);
             $post->image = $this->uploadPostImage($request);
         }
@@ -122,7 +122,7 @@ class PostsController extends Controller
         //내가원하는 파일시스템 상의 위치에 원하는 이름으로
         //파일을 저장하고
         if($request->file('imageFile')){
-            $post->imagePath = $this->uploadPostImage($request);
+            $post->image = $this->uploadPostImage($request);
         }
 
         $post->save();
