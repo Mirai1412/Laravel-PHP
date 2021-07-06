@@ -9,11 +9,11 @@ class Post extends Model
 {
     use HasFactory;
 
-    // public function imagePath(){
-    //     // $path = '/storage/images/';
-    //     $path = env('IMAGE_PATH', '/storage/images/');
-    //     $imageFile = $this->image ?? 'no.png';
-    //     return $path.$imageFile;
-    // }
+    public function imagePath(){
+        // $path = '/storage/images/';
+        $path = env('IMAGE_PATH', '/storage/images/');
+        $imageFile = $this->image ?? 'no.jpg';
+        return $path.$imageFile;
+    }
 
 }

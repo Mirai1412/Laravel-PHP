@@ -25,8 +25,9 @@
             <div class="content">
                 <label for ="imageFile">Post Image</label>
                 <img class="img-thumbnail" width="25%"
-                src="/storage/images/{{ $post->image ?? 'no.jpg'}}"/>
-                {{-- <img src="{{ $post->imagePath}}"> --}}
+                src="{{$post-> imagePath()}}">
+                {{-- src="/storage/images/{{ $post->image ?? 'no.jpg'}}"> --}}
+
             </div>
 
             <div class="day">

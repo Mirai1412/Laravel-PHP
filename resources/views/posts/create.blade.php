@@ -13,9 +13,8 @@
             .check input:invalid {
                 border-color: red;
             }
-            .file{
-
-            }
+            .file {
+                }
             form {
                 margin: 100px;
             }
@@ -87,10 +86,9 @@
             <!-- file field -->
 
             <div class="file">
-                    <label
-                        for="file"
-                        class="">File : </label>
-                    <input type="file" id="file" name="imageFile">
+                <label for="file" class="">File :
+                </label>
+                <input type="file" id="file" name="imageFile">
             </div>
 
             <div class="dtn">

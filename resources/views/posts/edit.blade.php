@@ -13,9 +13,8 @@
             .check input:invalid {
                 border-color: red;
             }
-            .file{
-
-            }
+            .file {
+                }
             form {
                 margin: 100px;
             }
@@ -38,7 +37,7 @@
     </head>
     <body>
         <form
-            action="{{ route('post.update',['id=>$post->id'])}}"
+            action="{{ route('post.update',['id'=>$post->id])}}"
             method="post"
             enctype="multipart/form-data"
             {{-- 파일을 업로드하기위해 필수 --}}
@@ -55,7 +54,7 @@
                         class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
                         type="text"
                         name="title"
-                        value="{{ old('title') ? old(title) : $post->title}}"
+                        value="{{ old('title') ? old('title') : $post->title}}"
                         placeholder="Your name"
                         required="required">
                     <label
@@ -89,14 +88,19 @@
             </div>
             <!-- file field -->
             <div class="">
-                <img class="img-thumbnail" width="25%" src="/storage/images/{{ $post->image ?? 'no.jpg'}}">
+                <img
+                    class="img-thumbnail"
+                    width="25%"
+                    src="{{$post->imagePath()}}">
             </div>
             <br>
             <div class="file">
-                    <label
-                        for="file"
-                        class="">File : </label>
-                    <input type="file" id="file" name="imageFile">
+                <label for="file" class="">File :
+                </label>
+                <input type="file" id="file" name="imageFile">
+                @error('imageFile')
+                <div>{{ $message }}</div>
+            @enderror
             </div>
             <br>
             <div class="dtn">

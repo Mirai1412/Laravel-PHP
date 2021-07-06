@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use GuzzleHttp\Psr7\UploadedFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class PostsController extends Controller
@@ -25,7 +27,6 @@ class PostsController extends Controller
 
     public function update(Request $request, $id)//생성자   //인젝션 받을 객체는 라우터파라미터 앞에 와야한다.
     {
-
         $request->validate([
             'title' => 'required | min:3',
             'content' => 'required',
@@ -33,14 +34,36 @@ class PostsController extends Controller
 
         ]); // 글자수 제한 파일 용량제한
 
-        $post = Post::findOrFail(100);
+        $post = Post::find($id);
          // 이미지 파일 수정.파일시스템에서
+
+        if($request->file('imageFile')){
+            $imagePath = 'public/images/'.$post->image;
+            Storage::delete($imagePath);
+            $post->image = $this->uploadPostImage($request);
+        }
+
         // 게시글을 데이터베이스에서 수정
-        $post->title=$request->title;
-        $post->content=$request->content;
+        $post->title = $request->title;
+        $post->content = $request->content;
         $post->save();
 
-        return redirect()->route('post.show',['id'=>$id]);
+        return redirect()->route('post.show',['id'=> $id]);
+
+    }
+
+    protected function uploadPostImage($request){
+        $name  = $request->file('imageFile')->getClientOriginalName();
+        //$request->file('imageFile')->stireAs('images',$fileName);
+        //space.jpg
+        //space.123dlacoghks.jpg 로 바꾸고싶다
+        $extension = $request->file('imageFile')->extension();
+        $nameWithoutExtension = Str::of($name)->basename('.' .$extension);
+        $fileName =  $nameWithoutExtension.'.'.time().'.'.$extension;
+        //dd($fileName);
+        //파일 이름을 컬럼에 설정
+        $request->file('imageFile')->storeAs('public/images',$fileName);
+        return $fileName;
     }
 
     public function destroy($id)//생성자
@@ -99,17 +122,7 @@ class PostsController extends Controller
         //내가원하는 파일시스템 상의 위치에 원하는 이름으로
         //파일을 저장하고
         if($request->file('imageFile')){
-        $name  = $request->file('imageFile')->getClientOriginalName();
-        //$request->file('imageFile')->stireAs('images',$fileName);
-        //space.jpg
-        //space.123dlacoghks.jpg 로 바꾸고싶다
-        $extension = $request->file('imageFile')->extension();
-        $nameWithoutExtension = Str::of($name)->basename('.' .$extension);
-        $fileName =  $nameWithoutExtension.'.'.time().'.'.$extension;
-        //dd($fileName);
-        //파일 이름을 컬럼에 설정
-        $request->file('imageFile')->storeAs('public/images',$fileName);
-        $post->image = $fileName;
+            $post->imagePath = $this->uploadPostImage($request);
         }
 
         $post->save();
