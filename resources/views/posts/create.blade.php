@@ -89,7 +89,7 @@
             <div class="file">
                     <label
                         for="file"
-                        class="">file : </label>
+                        class="">File : </label>
                     <input type="file" id="file" name="imageFile">
             </div>
 

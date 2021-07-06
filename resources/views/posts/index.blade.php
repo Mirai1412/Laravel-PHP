@@ -47,13 +47,14 @@
             <div class="m-2 text-justify text-sm">
                 <p class="text-right text-xs"> {{  $post-> created_at }}</p>
                 <span>
-                    <a href="{{route('posts.show', $post->id) }}">Title : {{ $post->title }}</a>
+                    <p>Title : {{ $post->title }}</p>
                 </span>
+                <br>
                 <div class="box2">
                     {{  $post->content }}
                 </div>
                 <div class="w-full text-right mt-4">
-                    <a class="text-green-400 uppercase font-bold text-sm" href="#">Read More</a>
+                    <a href="{{route('posts.show', $post->id) }}">Read More</a>
                   </div>
             </div>
         </div>
