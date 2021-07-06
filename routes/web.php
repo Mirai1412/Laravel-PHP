@@ -25,10 +25,13 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::get('/posts/create',
-    [PostsController::class, 'create'])->name('posts.create');/*->middleware(['auth']);//로그인을 하지않으면 로그인화면으로가게한다*/
+    [PostsController::class, 'create']);/*->middleware(['auth']);//로그인을 하지않으면 로그인화면으로가게한다*/
 Route::post('/posts/store',
     [PostsController::class, 'store'])->name('posts.store');/*->middleware(['auth']);*/
 Route::get('/posts/index',
     [PostsController::class, 'index'])->name('posts.index');//라우터에 이름을 준다
-Route::get('/posts/show/{id}',[PostsController::class, 'show'])->name('posts.show');
 
+Route::get('/posts/show/{id}',[PostsController::class, 'show'])->name('post.show');
+Route::get('/posts/{post}',[PostsController::class, 'edit'])->name('post.edit');
+Route::put('/posts/{id}',[PostsController::class, 'update'])->name('post.update');
+Route::delete('/posts/{id}',[PostsController::class, 'destroy'])->name('post.delete');

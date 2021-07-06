@@ -54,7 +54,7 @@
                     {{  $post->content }}
                 </div>
                 <div class="w-full text-right mt-4">
-                    <a href="{{route('posts.show', $post->id) }}">Read More</a>
+                    <a href="{{route('post.show', $post->id) }}">Read More</a>
                   </div>
             </div>
         </div>

@@ -15,6 +15,40 @@ class PostsController extends Controller
     //이안에있는 모든 라우터들은 auth미들웨어가 적용된다.
     }
 
+    public function edit(Post $post)//생성자
+    {   // 수정 폼 생성
+        //$post = Post::find($id);
+        //$post = Post::where('id',$id)->first();
+        return view('posts.edit')->with('post', $post);
+
+    }
+
+    public function update(Request $request, $id)//생성자   //인젝션 받을 객체는 라우터파라미터 앞에 와야한다.
+    {
+
+        $request->validate([
+            'title' => 'required | min:3',
+            'content' => 'required',
+            'imageFile'=>'image | max:2000'
+
+        ]); // 글자수 제한 파일 용량제한
+
+        $post = Post::findOrFail(100);
+         // 이미지 파일 수정.파일시스템에서
+        // 게시글을 데이터베이스에서 수정
+        $post->title=$request->title;
+        $post->content=$request->content;
+        $post->save();
+
+        return redirect()->route('post.show',['id'=>$id]);
+    }
+
+    public function destroy($id)//생성자
+    {   // 파일 시스템에서 이미지 파일 삭제
+        // 게시글을 데이터베이스에서 삭제해야한다.
+
+    }
+
     public function show(Request $request, $id){
       //  dd($request->page);
         $page = $request->page;
