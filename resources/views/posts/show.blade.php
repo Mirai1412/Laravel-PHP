@@ -107,6 +107,8 @@
                     </div>
 
                     @auth
+                    {{-- @if(auth()->user()->id == $post->user_id) --}}
+                    @can('update', $user)
                     <div class="author flex items-center -ml-3 my-3">
 
                         <div class="user-logo">
@@ -124,6 +126,8 @@
                                 style="border: 0">
                         </h2>
                     </div>
+                    {{-- @endif --}}
+                    @endcan
                     @endauth
                 </div>
             </div>
