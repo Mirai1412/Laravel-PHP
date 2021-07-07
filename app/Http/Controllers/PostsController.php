@@ -17,11 +17,11 @@ class PostsController extends Controller
     //이안에있는 모든 라우터들은 auth미들웨어가 적용된다.
     }
 
-    public function edit(Post $post)//생성자
+    public function edit(Request $request, Post $post)//생성자
     {   // 수정 폼 생성
         //$post = Post::find($id);
         //$post = Post::where('id',$id)->first();
-        return view('posts.edit')->with('post', $post);
+        return view('posts.edit', ['post'=>$post,'page'=>$request->page]);
 
     }
 
@@ -66,17 +66,26 @@ class PostsController extends Controller
         return $fileName;
     }
 
-    public function destroy($id)//생성자
+    public function destroy(Request $request,$id)//생성자
     {   // 파일 시스템에서 이미지 파일 삭제
         // 게시글을 데이터베이스에서 삭제해야한다.
+        $post = Post::findOrFail($id); //id 를 받아서 하면 찾을수없어서 findOrFail을 사용
+        $page  = $request->page;
+        if($post->image){
+            $imagePath = 'public/images/'.$post->image;
+            Storage::delete($imagePath);
+        }
 
+        $post->delete();
+
+        return redirect()->route('posts.index',['page'=>$page]);
     }
 
     public function show(Request $request, $id){
       //  dd($request->page);
+      //쿼리스트링으로 준것은 request로 받아야한다
         $page = $request->page;
         $post = Post::find($id);
-
         return view('posts.show',compact('post', 'page'));
     }
 

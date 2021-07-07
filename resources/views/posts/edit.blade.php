@@ -37,7 +37,7 @@
     </head>
     <body>
         <form
-            action="{{ route('post.update',['id'=>$post->id])}}"
+            action="{{ route('post.update',['id'=>$post->id, 'page'=>$page])}}"
             method="post"
             enctype="multipart/form-data"
             {{-- 파일을 업로드하기위해 필수 --}}

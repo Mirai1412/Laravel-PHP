@@ -39,12 +39,12 @@
             }
             div.box2{
                 width: 600px;
-                height: 100px;
+                height: 70px;
             }
         </style>
     </head>
     <body>
-        <h1>Bulletin Board</h1>
+        <h1>BULLETIN</h1>
         @foreach ($posts as $post)
         <div class="p-16">
 

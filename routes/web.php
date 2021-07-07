@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//라우터 파라미터까지만 기술
 Route::get('/', function () {
     return view('welcome');
 });
