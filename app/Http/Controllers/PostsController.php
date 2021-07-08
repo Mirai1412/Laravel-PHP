@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use GuzzleHttp\Psr7\UploadedFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,8 +18,10 @@ class PostsController extends Controller
     //이안에있는 모든 라우터들은 auth미들웨어가 적용된다.
     }
 
-    public function edit(Request $request, Post $post)//생성자
+    public function edit(Request $request, $id)//생성자
     {   // 수정 폼 생성
+
+        $post = Post::find($id);
         //$post = Post::find($id);
         //$post = Post::where('id',$id)->first();
         return view('posts.edit', ['post'=>$post,'page'=>$request->page]);
@@ -40,7 +43,7 @@ class PostsController extends Controller
         // Authorization. 즉 수정 권한이 있는지 검사
         // 즉, 로그인한 사용자와 게시글의 작성자가 같은지 체크
 
-        if($request()->user()->cannot('update',$post)){
+        if($request->user()->cannot('update',$post)){
             abort(403);
                        }
 
@@ -56,7 +59,7 @@ class PostsController extends Controller
         $post->content = $request->content;
         $post->save();
 
-        return redirect()->route('post.show',['id'=> $id]);
+        return redirect()->route('post.show', ['id'=>$id, 'page'=>$request->page]);
 
     }
 
@@ -82,8 +85,9 @@ class PostsController extends Controller
         // if(auth()->user()->id != $post->user_id){
         //     abort(403);
         // }
-        if($request()->user()->cannot('delete',$post)){
- abort(403);
+
+        if($request->user()->cannot('delete',$post)){
+    abort(403);
             }
 
         $page  = $request->page;
@@ -114,6 +118,13 @@ class PostsController extends Controller
 
     }
 
+    public function myposts(){
+        Auth::user()->id; //로그인 한사람의 아이디를 가져온다
+        $user = User::find(Auth::user()->id);
+        $posts = $user->posts()->paginate(5);//currentPage를 위해서 체인
+
+        return view('posts.myposts',['posts'=>$posts]);
+    }
 
     public function create(){
       //  dd('OK'); //이안에 넣는 내용을 넣고 죽어라
@@ -157,4 +168,7 @@ class PostsController extends Controller
         return redirect('/posts/index');// post는 redirect으로 처리한다.
 
     }
+
+
+
 }

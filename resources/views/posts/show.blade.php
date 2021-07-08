@@ -92,10 +92,10 @@
                         </a>
                     </div>
 
+                    @auth
+                    {{-- @if(auth()->user()->id == $post->user_id) --}}
+                    @can('update', $post)
                     <div class="box23">
-                        <a
-                            href="{{ route('post.edit',['post'=>$post->id, 'page'=>$page]) }}"
-                            class="text-blue-500 text-xs -ml-3 ">EDIT</a>
                         <form
                             action="{{ route('post.delete',['id'=>$post->id, 'page'=>$page]) }}"
                             method="post">
@@ -104,11 +104,13 @@
                                 DELETE
                             </button>
                         </form>
+                        <a
+                        href="{{ route('post.edit',['id'=>$post->id, 'page'=>$page]) }}"
+                        class="text-blue-500 text-xs -ml-3 ">EDIT</a>
                     </div>
+                    @endcan
+                    @endauth
 
-                    @auth
-                    {{-- @if(auth()->user()->id == $post->user_id) --}}
-                    @can('update', $user)
                     <div class="author flex items-center -ml-3 my-3">
 
                         <div class="user-logo">
@@ -119,7 +121,7 @@
                         </div>
 
                         <h2 class="text-sm tracking-tighter text-gray-900">
-                            USER_ID :<input type="text" value="{{ $post->user_id}}" style="border: 0">
+                            USER_ID :<input type="text" value="{{ $post->user->name}}" style="border: 0">
                             Creation Time :<input
                                 type="text"
                                 value="{{ $post->updated_at->diffForHumans()/*몇분전에 작성을 했는지*/}}"
@@ -127,8 +129,7 @@
                         </h2>
                     </div>
                     {{-- @endif --}}
-                    @endcan
-                    @endauth
+
                 </div>
             </div>
 

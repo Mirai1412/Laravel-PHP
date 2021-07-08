@@ -4,7 +4,7 @@
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <title>Bulletin Board</title>
+        <title>BULLETIN</title>
         <style>
             body {
                 width: 800px;
@@ -61,9 +61,11 @@
                     <div class="box2">
                         {{  $post->content }}
                     </div>
+
                     <div class="w-full text-right mt-4">
-                        <a href="{{route('post.show', $post->id) }}">Read More</a>
+                        <a href="{{route('post.show', ['id'=>$post->id, 'page'=>$posts->currentPage()])}}">Read More</a>
                     </div>
+
                 </div>
             </div>
 
@@ -75,12 +77,21 @@
                 class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6">Creating a Post</button>
         </a>
         @endauth
+
+        <a href="/posts/mypost">
+            <button
+                type="submit"
+                class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6">My Post</button>
+        </a>
+
         <a href="{{route('dashboard')}}">
             <button
                 type="submit"
                 class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6">
                 Dashboard</button>
         </a>
+
+
         <div>
             {{ $posts->links()}}
         </div>
