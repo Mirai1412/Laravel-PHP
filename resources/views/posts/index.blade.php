@@ -59,7 +59,7 @@
                     </span>
                     <br>
                     <div class="box2">
-                        {{  $post->content }}
+                        {!! $post->content !!}
                     </div>
 
                     <div class="w-full text-right mt-4">

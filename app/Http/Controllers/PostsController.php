@@ -122,7 +122,8 @@ class PostsController extends Controller
         Auth::user()->id; //로그인 한사람의 아이디를 가져온다
         $user = User::find(Auth::user()->id);
         $posts = $user->posts()->paginate(5);//currentPage를 위해서 체인
-
+        //$posts = auth()->user()->posts()->latest()->paginate(5);
+        //return view('posts.index',compact('posts'));
         return view('posts.myposts',['posts'=>$posts]);
     }
 

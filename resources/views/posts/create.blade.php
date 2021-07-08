@@ -4,6 +4,7 @@
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/classic/ckeditor.js"></script>
         <title>Post Create</title>
         <style>
             body {
@@ -98,5 +99,15 @@
                     Create</button>
             </div>
         </form>
+        <script>
+            ClassicEditor
+                    .create( document.querySelector( '#content' ) )
+                    .then( editor => {
+                            console.log( editor );
+                    } )
+                    .catch( error => {
+                            console.error( error );
+                    } );
+    </script>
     </body>
 </html>

@@ -71,7 +71,7 @@
                         style="border: 0">
 
                     <div class="text-sm text-gray-700 px-2 mr-1">
-                        <textarea id="content" name="content" readonly="readonly" style="border: 0">{{$post->content}}</textarea>
+                        <div id="content" name="content" readonly="readonly" style="border: 0">{!! $post->content !!}</div>
                     </div>
 
                     <div class="flex items-center justify-between mt-2 mx-6">
@@ -96,6 +96,7 @@
                     {{-- @if(auth()->user()->id == $post->user_id) --}}
                     @can('update', $post)
                     <div class="box23">
+
                         <form
                             action="{{ route('post.delete',['id'=>$post->id, 'page'=>$page]) }}"
                             method="post">
@@ -105,11 +106,10 @@
                             </button>
                         </form>
                         <a
-                        href="{{ route('post.edit',['id'=>$post->id, 'page'=>$page]) }}"
-                        class="text-blue-500 text-xs -ml-3 ">EDIT</a>
+                            href="{{ route('post.edit',['id'=>$post->id, 'page'=>$page]) }}"
+                            class="text-blue-500 text-xs -ml-3 ">EDIT</a>
                     </div>
-                    @endcan
-                    @endauth
+                    @endcan @endauth
 
                     <div class="author flex items-center -ml-3 my-3">
 
