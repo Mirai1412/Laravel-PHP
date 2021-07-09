@@ -106,7 +106,13 @@ class PostsController extends Controller
       //쿼리스트링으로 준것은 request로 받아야한다
         $page = $request->page;
         $post = Post::find($id);
+        $post->count++; // 조회수 증가
+        $post->save(); // DB에 반영
+
+
+
         return view('posts.show',compact('post', 'page'));
+
     }
 
     public function index(){

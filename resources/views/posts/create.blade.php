@@ -53,12 +53,12 @@
                         type="text"
                         name="title"
                         value="{{ old('title')}}"
-                        placeholder="Your name"
+                        placeholder="Title"
                         required="required">
                     <label
                         for="title"
                         class="absolute tracking-wide py-2 px-4 mb-4 opacity-0 leading-tight block top-0 left-0 cursor-text">
-                        Your name
+                        Title
                     </label>
                     @error('title')
                     <div>{{$message}}</div>
