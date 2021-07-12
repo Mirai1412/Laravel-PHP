@@ -64,7 +64,7 @@
 
                     <div class="w-full text-right mt-4">
 
-                        <p>{{ $post->count }} {{$post->count > 0 ? Str::plural('view',$post->count)  : 'views'}} </p>
+                        <p>{{ $post->viewers->count() }} {{$post->viewers->count() > 0 ? Str::plural('view',$post->viewers->count())  : 'views'}} </p>
 
                         <a href="{{route('post.show', ['id'=>$post->id, 'page'=>$posts->currentPage()])}}">Read More</a>
                     </div>

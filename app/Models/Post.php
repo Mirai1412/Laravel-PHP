@@ -20,4 +20,7 @@ class Post extends Model
         return $this->belongsTo(User::class);//조인을 해서 어쩌고저쩌고한다
     }
 
+    public function viewers(){
+    return $this->belongsToMany(User::class/*,'post_user','post_id','user_id','id','id','users'*/);//뒤에 더 적지않아도 알아서 조인을 해준다.
+    }
 }

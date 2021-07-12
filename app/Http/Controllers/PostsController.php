@@ -106,10 +106,18 @@ class PostsController extends Controller
       //쿼리스트링으로 준것은 request로 받아야한다
         $page = $request->page;
         $post = Post::find($id);
-        $post->count++; // 조회수 증가
-        $post->save(); // DB에 반영
 
+        //$post->count++; // 조회수 증가
+        //$post->save(); // DB에 반영
 
+        // 이 글을 조회한 사용자들 중에, 현제
+        // 로그인한 사용자가 포함되어 있는지를 체크하고
+        // 포함되어 있지 않으면 추가.
+        // 포함되어 있으면 다음단계로 넘어감.
+
+        if(Auth::user() !=null && !$post -> viewers->contains(Auth::user())){
+            $post->viewers()->attach(Auth::user()->id);
+        }
 
         return view('posts.show',compact('post', 'page'));
 
