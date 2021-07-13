@@ -1,0 +1,128 @@
+framework
+laraver.kr
+mysql : 990625
+php artisan serve -->서버키기
+php artisan help serve
+php artisan make:controller TestController
+php artisan route:list
+ctrl + shift + b 자동 줄마춤기능 beauty 다운
+ctrl + i
+
+larvaer의 미들웨어를 거쳐서
+라우터에서 컨트롤러에서 특정 메소드가 실행
+그리고 blade.php 파일 리턴
+그결과가 출력
+
+글등록은 /posts/store->/posts/index
+
+get->view 포워드
+post->redirect 시킨다
+
+get 방식은 상세 정보조회
+자원에 대한 변경요청은 post요청으로 보낸다.
+
+post는 모델 클레스
+model - 대응되는 테이블의 하나의 레코드를 나타내는 클래스를 정의 POST
+
+//csrf --> 토큰 생성위해 필수
+
+DB-> laraver 데베새로생성 ->node도 다운필요
+env파일에서 DB부분수정
+php artisan migrate
+https://laravel.com/docs/8.x/starter-kits 에서 순서대로
+php artisan make:model Post
+php artisan make:migration create_posts_table //테이블 생성 -> DB migrate에들어가면 기록이 들어가 있다
+php artisan migrate//추가
+php artisan migrate:rollback//롤백
+
+php artisan tinker
+$post = new Post; // post 객체 생성 DB저장된게 아닌 메모리 상에만 생성
+-----객체를 생성하고 시작해야한다. 안되면 use App\Models\Post-------
+User::all();
+$post->title='Post 1';
+$post->content='This is Post 1';//user id를 주지않으면 에러발생
+$post->user_id=1;
+$post->save(); //저장
+$post->delete(); //삭제     //이미있는놈이면 업데이트가됨 새로넣고 싶으면 처음부터 새로만든다.
+Post::all(); DB값 불러오기
+Post::find(1);//id가 1번인 값을 불러온다.
+$post->title='Post 3updated'; // title내용을 업데이트해준다 그후 save
+$user->delete(); // 유저 삭제
+quit 나가기
+
+옵션추가
+php artisan make:migration create_posts_table --table=posts
+
+post 방식 요청처리시는 redirection으로 처리
+
+index메소드 생성
+
+lang에 kr폴더생성후 validation복사후 안에
+    'required' => 'The :attribute 는 필수항목입니다.',
+원하는 말로 변경
+app.php에서 locale => ko로변경하면 한글로 바뀐다..
+
+public폴더에 있으면 바로가져올수있다
+웹서버는 기본적으로 public폴더에 있는 것들이 나타난다.
+
+ php artisan list //사용가능한 리스트가 나옴.
+ php artisan storage:link
+
+public 밑에 경로설정
+public storage images 에 사진을 넣는다
+
+Authentication : 인증,로그인
+Authorization : 권한관리
+
+php artisan make:policy PostPolicy --model=Post
+
+update 와 delete에
+return $user->id === $post->user_id; 기입
+
+user_id를 작성을위해서는 DB를 조인해야한다
+
+SELECT p.*, u.name
+FROM posts p INNER JOIN users u
+ ON p.user_id = u.id
+WHERE p.id IN (1,2,3,4,5)
+
+modle클래스에 정의하면된다.
+
+조회수 증가방법
+1. 누구나 무한정으로 +가능
+2. 특정user가 특정 글에 대해서는 오직1만 증가하는 방법
+php artisan make:migration add_count_to_posts_table
+php artisan migrate 하기
+
+SELECT u.*, p.id, p.title, p.content
+FROM users u INNER JOIN POST_USER pu
+ON u.id = pu.user_id
+INNER JOIN posts p
+ON p.id = pu.post_id
+WHERE u.id=' '
+
+php artisan make:migration create_post_user_table //post_user_table 테이블 생성
+php artisan migrate
+
+php artisan tinker
+Post::select('id')->get();
+DB::table('post_user')->insert(['user_id' => 1,'post_id'=> 43,'created_at'=>now()]);
+
+SELECT u.name, p.title
+FROM users u INNER JOIN post_user pu
+	ON u.id = pu.user_id
+	INNER JOIN posts p ON
+	pu.post_id = p.id
+WHERE u.id =1
+
+    'github' => [
+        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect' => 'http://localhost:8000/github/callback',
+    ],
+
+GITHUB_CLIENT_ID=0b64dd597f8fa4ef896f
+GITHUB_CLIENT_SECRET=eaa60454895c2288a5fb1c3672d09ed1a7dd2361
+깃허브 추가 .env를 가서 위에것을 작성
+
+ctl+p 파일검색
