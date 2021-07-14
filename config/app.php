@@ -106,8 +106,9 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
-
+     'faker_locale' => 'en_US',
+    // 'faker_locale' => 'ko_KR', //더미 데이터를 한글로 생성
+    // 'faker_locale' => 'ja_JP',
     /*
     |--------------------------------------------------------------------------
     | Encryption Key

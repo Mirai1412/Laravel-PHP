@@ -36,18 +36,18 @@ php artisan migrate//추가
 php artisan migrate:rollback//롤백
 
 php artisan tinker
-$post = new Post; // post 객체 생성 DB저장된게 아닌 메모리 상에만 생성
+>>> $post = new Post; // post 객체 생성 DB저장된게 아닌 메모리 상에만 생성
 -----객체를 생성하고 시작해야한다. 안되면 use App\Models\Post-------
-User::all();
-$post->title='Post 1';
-$post->content='This is Post 1';//user id를 주지않으면 에러발생
-$post->user_id=1;
-$post->save(); //저장
-$post->delete(); //삭제     //이미있는놈이면 업데이트가됨 새로넣고 싶으면 처음부터 새로만든다.
-Post::all(); DB값 불러오기
-Post::find(1);//id가 1번인 값을 불러온다.
-$post->title='Post 3updated'; // title내용을 업데이트해준다 그후 save
-$user->delete(); // 유저 삭제
+>>> User::all();
+>>> $post->title='Post 1';
+>>> $post->content='This is Post 1';//user id를 주지않으면 에러발생
+>>> $post->user_id=1;
+>>> $post->save(); //저장
+>>> $post->delete(); //삭제     //이미있는놈이면 업데이트가됨 새로넣고 싶으면 처음부터 새로만든다.
+>>> Post::all(); DB값 불러오기
+>>> Post::find(1);//id가 1번인 값을 불러온다.
+>>> $post->title='Post 3updated'; // title내용을 업데이트해준다 그후 save
+>>> $user->delete(); // 유저 삭제
 quit 나가기
 
 옵션추가
@@ -105,8 +105,8 @@ php artisan make:migration create_post_user_table //post_user_table 테이블 �
 php artisan migrate
 
 php artisan tinker
-Post::select('id')->get();
-DB::table('post_user')->insert(['user_id' => 1,'post_id'=> 43,'created_at'=>now()]);
+>>> Post::select('id')->get();
+>>> DB::table('post_user')->insert(['user_id' => 1,'post_id'=> 43,'created_at'=>now()]);
 
 SELECT u.name, p.title
 FROM users u INNER JOIN post_user pu
@@ -126,3 +126,37 @@ GITHUB_CLIENT_SECRET=eaa60454895c2288a5fb1c3672d09ed1a7dd2361
 깃허브 추가 .env를 가서 위에것을 작성
 
 ctl+p 파일검색
+
+카카오
+검색 좋아요 댓글-view로 구현 상세보기로 들어가면 댓글리스트가 나오도록
+AWS - 공부
+R.C car
+
+더미 데이터를 테이블에 삽입할 필요가 있다.
+-Factory
+-Char.js 이용해서 그래프 나타내기
+-Seeder
+
+traits 쓰면 내가 선언한 메소드처럼 사용가능
+
+faker
+php artisan tinker
+>>> $user = User::factory()->make(); // 가짜데이터를 생성한다.
+>>> $user = User::factory()->count(3)->make(); //3개만들어줘
+>>> $user = User::factory()->count(10)->create(); //데이터베이스에 10개를 넣는다.
+>>> Post::all()->count(); 개수 확인
+app.php 에서 유저 국적변경가능
+DB에 넣을려면  Post::factory()->create();
+
+>>> Post::factory()->make();
+
+php artisan make:model PostUser
+
+>>> use App\Models\PostUser
+>>> PostUser::all(); //경로 적고 찾는다
+
+USE laravel;
+SELECT post_id, COUNT(*) cnt
+FROM post_user
+GROUP BY post_id
+ORDER BY cnt DESC LIMIT 5 OFFSET 0;
