@@ -1,51 +1,47 @@
-<!DOCTYPE html>
+<x-app-layout>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <title>My BULLETIN</title>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <title>MY POST</title>
     <style>
-        body {
-            width: 800px;
-            margin: 0 auto;
-            height: 1200px;
-        }
-        .flex2 {
-            margin: 10px;
-        }
-        h1 {
-            text-align: center;
-            font-size: 50px;
-        }
-        div.bg {
-            padding: 0;
-            margin-bottom: 10px;
-            width: 600px;
-        }
-        div.p-16 {
-            padding: 0;
-            margin: 10px;
-        }
-        div.grid {
-            margin-bottom: 5px;
-        }
-        button {
-            margin-left: 10px;
-            margin-right: 300px;
-        }
-        div.hidden {
-            margin: 10px;
-        }
-        div.box2{
-            width: 600px;
-            height: 70px;
-        }
+        body{
+                width: 1200px;
+                margin: 0 auto;
+                height: 1500px;
+            }
+            div.p-16{
+                width: 1150px;
+                padding: 0;
+                margin: 10px 25px 20px 25px;
+
+            }
+            .max-w-7xl{
+                margin-bottom: 20px;
+            }
+            main{
+
+                width: 1200px;
+                height: 1050px;
+            }
+            .max-w-7xl {
+                text-align: center;
+            }
+
+            .hidden {
+                width: 1150px;
+                margin: 0 25px 0 25px;
+
+            }
     </style>
 </head>
 <body>
-    <h1>My BULLETIN</h1>
-
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('MY POST') }}
+        </h2>
+    </x-slot>
     @foreach ($posts as $post)
     <div class="p-16">
         <div
@@ -69,31 +65,11 @@
         </div>
     </div>
 
-    @endforeach @auth<!-- 현재로그인한 사용자만 보이게한다.-->
-    <a href="/posts/create">
-        <button
-            type="submit"
-            class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6">Creating a Post</button>
-    </a>
-    @endauth
-
-    <a href="/posts/index">
-        <button
-            type="submit"
-            class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6">
-            All Post</button>
-    </a>
-
-    <a href="{{route('dashboard')}}">
-        <button
-            type="submit"
-            class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6">
-            Dashboard</button>
-    </a>
-
+    @endforeach
 
     <div>
         {{ $posts->links()}}
     </div>
 </body>
-</html>
+</x-app-layout>
+

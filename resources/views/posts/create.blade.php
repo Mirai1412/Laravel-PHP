@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/classic/ckeditor.js"></script>
-        <title>Post Create</title>
+        <title>POST CREATE</title>
         <style>
             body {
                 margin: 0 auto;
@@ -32,7 +32,11 @@
                 opacity: 1;
             }
             button {
+                margin: 10px 0 0 0;
                 width: 100%;
+            }
+            h2{
+                text-align: center;
             }
         </style>
     </head>
@@ -44,7 +48,7 @@
             {{-- 파일을 업로드하기위해 필수 --}}
             class="w-full mx-auto max-w-3xl bg-white shadow p-8 text-gray-700 ">
             @csrf<!-- 토큰 -->
-            <h2 class="w-full my-2 text-3xl font-bold leading-tight my-5">Post Create</h2>
+            <h2 class="w-full my-2 text-3xl font-bold leading-tight my-5">POST CREATE</h2>
             <!-- name field -->
             <div class="flex flex-wrap mb-6">
                 <div class="relative w-full appearance-none label-floating">
@@ -96,7 +100,13 @@
                 <button
                     type="submit"
                     class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6">
-                    Create</button>
+                    CREATE</button>
+
+                    <button
+                    type="submit"
+                    class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6">
+                    <a href="{{ route('posts.index') }}">  BULLETIN</a>
+                  </button>
             </div>
         </form>
         <script>

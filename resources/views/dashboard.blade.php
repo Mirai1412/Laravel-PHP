@@ -1,4 +1,18 @@
 <x-app-layout>
+    <style>
+        .min-h-screen  {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        .max-w-7xl{
+            width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}

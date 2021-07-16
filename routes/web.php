@@ -26,7 +26,7 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::get('/posts/create',
-    [PostsController::class, 'create']);/*->middleware(['auth']);//로그인을 하지않으면 로그인화면으로가게한다*/
+    [PostsController::class, 'create'])->name('posts.create')->middleware(['auth']);//로그인을 하지않으면 로그인화면으로가게한다*/
 Route::post('/posts/store',
     [PostsController::class, 'store'])->name('posts.store');/*->middleware(['auth']);*/
 Route::get('/posts/index',

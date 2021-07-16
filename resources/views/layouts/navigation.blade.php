@@ -13,12 +13,20 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('DASHBOARD') }}
                     </x-nav-link>
 
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
-                        {{ __('Posts') }}
+                        {{ __('BULLETIN') }}
                     </x-nav-link>
+                   @auth
+                   <x-nav-link :href="route('posts.myposts')" :active="request()->routeIs('posts.myposts')">
+                    {{ __('MYPOST') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('posts.create')" :active="request()->routeIs('posts.create')">
+                        {{ __('CREATE') }}
+                    </x-nav-link>
+                    @endauth
                 </div>
             </div>
 
@@ -56,6 +64,14 @@
             </div>
             @endauth
             <!-- Hamburger -->
+
+
+
+
+
+
+
+
             <div class="-mr-2 flex items-center sm:hidden">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">

@@ -5,40 +5,33 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <title>BULLETIN</title>
         <style>
-            body {
-                width: 800px;
+            body{
+                width: 1200px;
                 margin: 0 auto;
-                height: 1200px;
+                height: 1500px;
             }
-            .flex2 {
-                margin: 10px;
+            div.p-16{
+                width: 1150px;
+                padding: 0;
+                margin: 10px 25px 20px 25px;
+
             }
-            h1 {
+            .max-w-7xl{
+                margin-bottom: 20px;
+            }
+            main{
+
+                width: 1200px;
+                height: 1050px;
+            }
+            .max-w-7xl {
                 text-align: center;
-                font-size: 50px;
             }
-            div.bg {
-                padding: 0;
-                margin-bottom: 10px;
-                width: 600px;
-            }
-            div.p-16 {
-                padding: 0;
-                margin: 10px;
-            }
-            div.grid {
-                margin-bottom: 5px;
-            }
-            button {
-                margin-left: 10px;
-                margin-right: 300px;
-            }
-            div.hidden {
-                margin: 10px;
-            }
-            div.box2{
-                width: 600px;
-                height: 70px;
+
+            .hidden {
+                width: 1150px;
+                margin: 0 25px 0 25px;
+
             }
         </style>
     </head>
@@ -46,11 +39,9 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('post') }}
+            {{ __('BULLETIN') }}
         </h2>
     </x-slot>
-        <h1>BULLETIN</h1>
-
         @foreach ($posts as $post)
         <div class="p-16">
             <div
@@ -78,28 +69,7 @@
             </div>
 
         </div>
-        @endforeach @auth<!-- 현재로그인한 사용자만 보이게한다.-->
-        <a href="/posts/create">
-            <button
-                type="submit"
-                class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6">Creating a Post</button>
-        </a>
-        @endauth
-
-        <a href="/posts/mypost">
-            <button
-                type="submit"
-                class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6">My Post</button>
-        </a>
-
-        <a href="{{route('dashboard')}}">
-            <button
-                type="submit"
-                class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6">
-                Dashboard</button>
-        </a>
-
-
+        @endforeach
         <div>
             {{ $posts->links()}}
         </div>
