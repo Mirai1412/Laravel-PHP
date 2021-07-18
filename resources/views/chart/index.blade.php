@@ -7,7 +7,6 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.1/dist/chart.min.js"></script>
         <title>Document</title>
         <style>
-
         </style>
     </head>
     <body>

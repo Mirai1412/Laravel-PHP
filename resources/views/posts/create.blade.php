@@ -14,8 +14,7 @@
             .check input:invalid {
                 border-color: red;
             }
-            .file {
-                }
+            .file {}
             form {
                 margin: 100px;
             }
@@ -32,10 +31,10 @@
                 opacity: 1;
             }
             button {
-                margin: 10px 0 0 0;
+                margin: 10px 0 0;
                 width: 100%;
             }
-            h2{
+            h2 {
                 text-align: center;
             }
         </style>
@@ -57,8 +56,7 @@
                         type="text"
                         name="title"
                         value="{{ old('title')}}"
-                        placeholder="Title"
-                        required="required">
+                        placeholder="Title">
                     <label
                         for="title"
                         class="absolute tracking-wide py-2 px-4 mb-4 opacity-0 leading-tight block top-0 left-0 cursor-text">
@@ -102,22 +100,24 @@
                     class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6">
                     CREATE</button>
 
+
                     <button
-                    type="submit"
-                    class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6">
-                    <a href="{{ route('posts.index') }}">  BULLETIN</a>
-                  </button>
+                        type="submit"
+                        class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6"
+                        ><a href="{{ route('posts.index') }}">BULLETIN</a>
+                    </button>
+
             </div>
         </form>
         <script>
             ClassicEditor
-                    .create( document.querySelector( '#content' ) )
-                    .then( editor => {
-                            console.log( editor );
-                    } )
-                    .catch( error => {
-                            console.error( error );
-                    } );
-    </script>
+                .create(document.querySelector('#content'))
+                .then(editor => {
+                    console.log(editor);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        </script>
     </body>
 </html>
