@@ -49,6 +49,7 @@
             @csrf<!-- 토큰 -->
             <h2 class="w-full my-2 text-3xl font-bold leading-tight my-5">POST CREATE</h2>
             <!-- name field -->
+
             <div class="flex flex-wrap mb-6">
                 <div class="relative w-full appearance-none label-floating">
                     <input
@@ -99,13 +100,13 @@
                     type="submit"
                     class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6">
                     CREATE</button>
-
-
                     <button
-                        type="submit"
-                        class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6"
-                        ><a href="{{ route('posts.index') }}">BULLETIN</a>
-                    </button>
+                    type="submit"
+                    class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6"
+                    style="width: 110px; text-align: center"
+                    ><a href="{{ route('posts.index') }}">BULLETIN</a>
+                </button>
+
 
             </div>
         </form>

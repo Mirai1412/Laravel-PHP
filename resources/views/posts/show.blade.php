@@ -9,6 +9,10 @@
             .font-bold {
                 margin: 10px;
             }
+            p{
+            margin-left: 15px;
+            margin-bottom: 15px;
+            }
 
 
         </style>
@@ -50,19 +54,21 @@
                             @auth
                             {{-- @if(auth()->user()->id == $post->user_id) --}}
                             @can('update', $post)
-                            <div class="box23">
-
+                            <div class="box23"    style="width: 300px;"
+                            >
                                 <form
                                     action="{{ route('post.delete',['id'=>$post->id, 'page'=>$page]) }}"
                                     method="post">
                                     @csrf @method("delete")
-                                    <button type="submit" class="text-blue-500 text-xs -ml-3 ">
+                                    <button type="submit" class="text-blue-500 text-xs -ml-3 "
+                                    style="margin-left:260px ">
                                         DELETE
                                     </button>
                                 </form>
                                 <a
                                     href="{{ route('post.edit',['id'=>$post->id, 'page'=>$page]) }}"
-                                    class="text-blue-500 text-xs -ml-3 ">EDIT</a>
+                                    class="text-blue-500 text-xs -ml-3 "
+                                    style="margin-left:260px ">EDIT</a>
                             </div>
                             @endcan @endauth
                         </div>
@@ -157,14 +163,17 @@
                                         30</div>
                                 </div>
                                 <div
-                                    class='flex text-gray-700 font-normal text-sm rounded-md mb-2 mr-4 items-center'>
+                                    class='flex text-gray-700 font-normal text-sm rounded-md mb-2 mr-4 items-center'
+                                    style="width: 100px"
+                                    >
 
                                     {{ $post->viewers->count() }}
                                     {{$post->viewers->count() > 0 ? Str::plural('view',$post->viewers->count())  : 'views'}}
 
                                 </div>
                             </div>
-                            <div class="mt-3 mx-5 w-full flex justify-end">
+                            <div class="mt-3 mx-5 w-full flex justify-end"
+                            style="margin-right: 0; width: 100px;">
                                 <div
                                     class='flex text-gray-700 font-normal text-sm rounded-md mb-2 mr-4 items-center'>Likes:
                                     <div class="ml-1 text-gray-400 font-thin text-ms">
@@ -172,12 +181,15 @@
                                 </div>
                             </div>
 
-                            <a href="{{route('posts.index', ['page'=>$page])}}" class="flex text-gray-700">
+                            <a href="{{route('posts.index', ['page'=>$page])}}" class="flex text-gray-700"
+                                style="width: 100px; line-height: 27px; height: 30px; margin-top: 10px;">
                                 <svg
                                     fill="none"
                                     viewbox="0 0 24 24"
                                     class="w-6 h-6 text-blue-500"
-                                    stroke="currentColor">
+                                    stroke="currentColor"
+                                    style="  height: 33px; margin-top: 0px;  margin-right: 2px; "
+                                    >
                                     <path
                                         stroke-linecap="round"
                                         stroke-linejoin="round"

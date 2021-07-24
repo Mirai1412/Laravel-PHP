@@ -25,7 +25,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     {{-- You're logged in! --}}
-                    <canvas id="myChart" width="400" height="400"></canvas>
+                    {{-- <canvas id="myChart" width="400" height="400"></canvas>
                     <script>
                         var ctx = document.getElementById('myChart');
                         var myChart = new Chart(ctx, {
@@ -71,8 +71,9 @@
                                 }
                             }
                         });
-                    </script>
+                    </script> --}}
                      {{-- You're logged in! --}}
+                     You're logged in!
                 </div>
             </div>
         </div>
