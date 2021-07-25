@@ -19,6 +19,9 @@
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                         {{ __('BULLETIN') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('post.chart')" :active="request()->routeIs('post.chart')">
+                        {{ __('CHART') }}
+                    </x-nav-link>
                    @auth
                    <x-nav-link :href="route('posts.myposts')" :active="request()->routeIs('posts.myposts')">
                     {{ __('MYPOST') }}

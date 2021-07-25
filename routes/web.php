@@ -38,5 +38,5 @@ Route::get('/posts/mypost',[PostsController::class, 'myposts'])->name('posts.myp
 Route::get('/posts/{id}',[PostsController::class, 'edit'])->name('post.edit');
 Route::put('/posts/{id}',[PostsController::class, 'update'])->name('post.update');
 Route::delete('/posts/{id}',[PostsController::class, 'destroy'])->name('post.delete');
-Route::get('/chart/index',[ChartController::class, 'index']);
+Route::get('/chart/index',[ChartController::class, 'index'])->name('post.chart');
 

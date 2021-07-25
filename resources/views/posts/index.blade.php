@@ -33,6 +33,9 @@
                 margin: 0 25px 0 25px;
 
             }
+            .hidden {
+                width: 1000px;
+            }
         </style>
     </head>
     <body>

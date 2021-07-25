@@ -1,15 +1,29 @@
-<!DOCTYPE html>
+<x-app-layout>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.1/dist/chart.min.js"></script>
-        <title>Document</title>
-        <style></style>
+
     </head>
+    <style>
+               .min-h-screen {
+                    width: 1200px;
+                    margin: 0 auto;
+                }
+                .max-w-7xl {
+                    width: 1200px;
+                    margin: 0 auto;
+                }
+                .hidden {
+                width: 1000px;
+            }
+    </style>
     <body>
-        <h1>게시글 작성 현황</h1>
+        <x-slot name="header">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight"
+            style="text-align: center">
+                {{ __('게시글 작성 현황') }}
+            </h2>
+        </x-slot>
         <canvas id="myChart" width="400" height="400"></canvas>
         <script>
         var ctx = document.getElementById('myChart').getContext('2d');
@@ -52,4 +66,4 @@
         </script>
 
     </body>
-</html>
+</x-app-layout>

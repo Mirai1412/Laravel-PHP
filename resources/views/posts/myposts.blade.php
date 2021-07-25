@@ -30,9 +30,7 @@
             }
 
             .hidden {
-                width: 1150px;
-                margin: 0 25px 0 25px;
-
+                width: 1000px;
             }
     </style>
 </head>
