@@ -18,20 +18,22 @@
 
             }
             .max-w-7xl{
+
                 margin-bottom: 20px;
+                text-align: center;
             }
             main{
-
                 width: 1200px;
                 height: 1050px;
-            }
-            .max-w-7xl {
-                text-align: center;
             }
 
             .hidden {
                 width: 1000px;
             }
+            .block{
+                    text-align: left;
+                }
+
     </style>
 </head>
 <body>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<x-app-layout>
 <html lang="en">
     <head>
         <meta charset="UTF-8"/>
@@ -6,6 +6,9 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <title>User Post</title>
         <style>
+            body{
+                height: 1500px;
+            }
             .font-bold {
                 margin: 10px;
             }
@@ -13,24 +16,42 @@
             margin-left: 15px;
             margin-bottom: 15px;
             }
-
+            .min-h-screen {
+                    width: 1200px;
+                    margin: 0 auto;
+                }
+                .max-w-7xl {
+                    width: 1200px;
+                    margin: 0 auto;
+                }
+                .hidden {
+                width: 1000px;
+            }
+            .max2{
+                height: 660px;
+                width: 1200px;
+            }
 
         </style>
     </head>
     <body>
-        <div class="">
+        <x-slot name="header">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight"
+            style="text-align: center">
+                {{ __('POST') }}
+            </h2>
+        </x-slot>
+        <div class="max2">
             <div
                 class='flex max-w-xl my-10 bg-white shadow-md rounded-lg overflow-hidden mx-auto'>
-                <div class='flex items-center w-full'>
+                <div class='flex items-center w-full'
+                >
                     <div class='w-full'>
-                        <div class="flex flex-row mt-2 px-2 py-3 mx-3">
-                            <div class="w-auto h-auto rounded-full border-2 border-pink-500">
-
-                                <img
-                                    class='w-12 h-12 object-cover rounded-full shadow cursor-pointer'
-                                    alt='User avatar'
-                                    src="{{$post-> imagePath()}}">
-
+                        <div
+                        style="width: 200px"
+                        class="flex flex-row mt-2 px-2 py-3 mx-3" >
+                            <div
+                            class="w-auto h-auto rounded-full border-2 border-pink-500">
                             </div>
 
                             <div class="flex flex-col mb-2 ml-4 mt-1">
@@ -173,7 +194,7 @@
                                 </div>
                             </div>
                             <div class="mt-3 mx-5 w-full flex justify-end"
-                            style="margin-right: 0; width: 100px;">
+                            style="margin-left: 100px; width: 820px;">
                                 <div
                                     class='flex text-gray-700 font-normal text-sm rounded-md mb-2 mr-4 items-center'>Likes:
                                     <div class="ml-1 text-gray-400 font-thin text-ms">
@@ -181,7 +202,7 @@
                                 </div>
                             </div>
 
-                            <a href="{{route('posts.index', ['page'=>$page])}}" class="flex text-gray-700"
+                            {{-- <a href="{{route('posts.index', ['page'=>$page])}}" class="flex text-gray-700"
                                 style="width: 100px; line-height: 27px; height: 30px; margin-top: 10px;">
                                 <svg
                                     fill="none"
@@ -197,7 +218,7 @@
                                         d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
                                 </svg>
                                 Go List
-                            </a>
+                            </a> --}}
                         </div>
                         <div
                             class="relative flex items-center self-center w-full max-w-xl p-4 overflow-hidden text-gray-600 focus-within:text-gray-400">
@@ -237,4 +258,4 @@
 
         </body>
 
-    </html>
+    </x-app-layout>
