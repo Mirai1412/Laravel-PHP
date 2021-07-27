@@ -9,7 +9,7 @@
         body{
                 width: 1200px;
                 margin: 0 auto;
-                height: 1500px;
+                height: 1250px;
             }
             div.p-16{
                 width: 1150px;
@@ -18,8 +18,6 @@
 
             }
             .max-w-7xl{
-
-                margin-bottom: 20px;
                 text-align: center;
             }
             main{
@@ -28,7 +26,7 @@
             }
 
             .hidden {
-                width: 1000px;
+                width: 740px;
             }
             .block{
                     text-align: left;

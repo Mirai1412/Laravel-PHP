@@ -14,7 +14,7 @@
                     margin: 0 auto;
                 }
                 .hidden {
-                width: 1000px;
+                width: 740px;
             }
     </style>
     <body>

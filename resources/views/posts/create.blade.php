@@ -24,10 +24,6 @@
                     color: #1f9d55;
                     opacity: 1;
                 }
-                button {
-                    margin: 10px 0 0;
-                    width: 100%;
-                }
                 h2 {
                     text-align: center;
                 }
@@ -37,25 +33,22 @@
                 }
                 .max-w-7xl {
                     width: 1200px;
-                    margin: 0 auto;
-
+                    margin-bottom: 100px;
                 }
                 .hidden {
-                    width: 1000px;
+                    width: 740px;
                 }
-
                 .rounded-md {
                     width: 192px;
                     height: 44px;
                 }
-                form{
-                    margin: 0;
-                }
-                .max23{
-                    height: 550px;
+                .max23 {
+                    height: 450px;
                     margin-bottom: 50px;
                 }
-
+                .relative {
+                    margin-bottom: 10px;
+                }
             </style>
         </head>
         <body>
@@ -120,6 +113,8 @@
                             <br>
                                 <div class="dtn">
                                     <button
+                                        style="margin: 10px 0 0;
+                                    width: 100%;"
                                         type="submit"
                                         class="border-2 border-blue-500 rounded-lg font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6">
                                         CREATE</button>

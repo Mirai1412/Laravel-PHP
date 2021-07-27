@@ -13,7 +13,7 @@
             text-align: center;
         }
         .hidden {
-                width: 1000px;
+                width: 740px;
             }
     </style>
 

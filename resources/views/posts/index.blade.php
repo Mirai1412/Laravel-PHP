@@ -8,7 +8,7 @@
             body{
                 width: 1200px;
                 margin: 0 auto;
-                height: 1500px;
+                height: 1250px;
             }
             div.p-16{
                 width: 1150px;
@@ -17,25 +17,22 @@
 
             }
             .max-w-7xl{
-                margin-bottom: 20px;
+
+                text-align: center;
             }
             main{
 
                 width: 1200px;
                 height: 1050px;
             }
-            .max-w-7xl {
-                text-align: center;
-            }
+
 
             .hidden {
-                width: 1150px;
+                width: 730px;
                 margin: 0 25px 0 25px;
+            }
 
-            }
-            .hidden {
-                width: 1000px;
-            }
+
         </style>
     </head>
     <body>
