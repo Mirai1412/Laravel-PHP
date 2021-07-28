@@ -39,7 +39,7 @@ php artisan tinker
 >>> $post = new Post; // post 객체 생성 DB저장된게 아닌 메모리 상에만 생성
 -----객체를 생성하고 시작해야한다. 안되면 use App\Models\Post-------
 >>> User::all();
->>> $post->title='Post 1';
+>>> $post->='Post 1';
 >>> $post->content='This is Post 1';//user id를 주지않으면 에러발생
 >>> $post->user_id=1;
 >>> $post->save(); //저장

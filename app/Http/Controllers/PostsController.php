@@ -135,11 +135,21 @@ class PostsController extends Controller
     public function myposts(){
         Auth::user()->id; //로그인 한사람의 아이디를 가져온다
         $user = User::find(Auth::user()->id);
-        $posts = $user->posts()->paginate(5);//currentPage를 위해서 체인
+        $posts = $user->posts()->paginate(5);
+        //currentPage를 위해서 체인
         //$posts = auth()->user()->posts()->latest()->paginate(5);
         //return view('posts.index',compact('posts'));
         return view('posts.myposts',['posts'=>$posts]);
     }
+
+    public function scposts(){
+        Auth::user()->id; //로그인 한사람의 아이디를 가져온다
+        $user = User::find(Auth::user()->id);
+        $posts = $user->posts()->paginate(5);
+        return view('posts.myposts',['posts'=>$posts]);
+
+    }
+
 
     public function create(){
       //  dd('OK'); //이안에 넣는 내용을 넣고 죽어라
