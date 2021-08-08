@@ -3,9 +3,11 @@
     <style>
         .min-h-screen  {
             width: 1200px;
+
             margin: 0 auto;
         }
         .max-w-7xl{
+
             width: 1200px;
             margin: 0 auto;
         }
@@ -13,6 +15,7 @@
             text-align: center;
         }
         .hidden {
+
                 width: 740px;
             }
     </style>
